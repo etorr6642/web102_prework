@@ -57,7 +57,12 @@ function addGamesToPage(games) {
 
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
-addGamesToPage(GAMES_JSON);
+
+//optional: sorted games in alphabetical order for an easier serach
+const sortedAlpha =  GAMES_JSON.sort( (item1, item2) => {
+    return item1.name.localeCompare(item2.name);
+});
+addGamesToPage(sortedAlpha);
 
 /*************************************************************************************
  * Challenge 4: Create the summary statistics at the top of the page displaying the
@@ -102,8 +107,13 @@ gamesCard.innerHTML=`${totalGames}`;
 function filterUnfundedOnly() {
     deleteChildElements(gamesContainer);
 
+    //optional: sorted games in alphabetical order for an easier serach
+    const sortedAlpha =  GAMES_JSON.sort( (item1, item2) => {
+        return item1.name.localeCompare(item2.name);
+    });
+
     // use filter() to get a list of games that have not yet met their goal
-    let gamesUnderGoal = GAMES_JSON.filter((game)=>{
+    let gamesUnderGoal = sortedAlpha.filter((game)=>{
         return game.pledged<game.goal;
     });
 
@@ -115,8 +125,13 @@ function filterUnfundedOnly() {
 function filterFundedOnly() {
     deleteChildElements(gamesContainer);
 
+    //optional: sorted games in alphabetical order for an easier serach
+    const sortedAlpha =  GAMES_JSON.sort( (item1, item2) => {
+        return item1.name.localeCompare(item2.name);
+    });
+
     // use filter() to get a list of games that have met or exceeded their goal
-    let gamesMetGoal = GAMES_JSON.filter((game)=>{
+    let gamesMetGoal = sortedAlpha.filter((game)=>{
         return game.pledged>=game.goal;
     });
 
@@ -128,8 +143,13 @@ function filterFundedOnly() {
 function showAllGames() {
     deleteChildElements(gamesContainer);
 
+    //optional: sorted games in alphabetical order for an easier serach
+    const sortedAlpha =  GAMES_JSON.sort( (item1, item2) => {
+        return item1.name.localeCompare(item2.name);
+    });
+
     // add all games from the JSON data to the DOM
-    addGamesToPage(GAMES_JSON);
+    addGamesToPage(sortedAlpha);
 
 }
 
